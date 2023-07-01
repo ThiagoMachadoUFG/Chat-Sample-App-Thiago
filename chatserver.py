@@ -11,6 +11,8 @@ def handle_client(conn, addr):
         print(type)
         conn.send(pickle.dumps("ACK"))  # send ACK to client
         conn.close()
+    except Exception as e:
+        print("Error handling client:", e)
 
 server_sock = socket(AF_INET, SOCK_STREAM)  # socket for clients to connect to this server
 server_sock.bind(('0.0.0.0', const.CHAT_SERVER_PORT))
