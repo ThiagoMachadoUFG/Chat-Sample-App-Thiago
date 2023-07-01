@@ -12,6 +12,7 @@ while True:
     #
     # Get a message from a sender client
     (conn, addr) = server_sock.accept()  # returns new socket and addr. client
+    print(addr)
     
     #print("Chat Server: client is connected from address " + str(addr))
 
