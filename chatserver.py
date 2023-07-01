@@ -23,7 +23,7 @@ def handle_client(conn, addr):
             conn.close()
             name=msg_pack[1]
             data[name]=addr[0]
-        else if type=="msge":
+        elif type=="msge":
             print("msge")
             
     except Exception as e:
