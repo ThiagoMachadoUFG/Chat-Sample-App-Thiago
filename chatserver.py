@@ -51,7 +51,7 @@ def handle_client(conn, addr):
 
             # Forward the message to the recipient client
             client_sock = socket(AF_INET, SOCK_STREAM)  # socket to connect to clients
-            dest_ip = dest_addr[0]
+            dest_ip = dest_addr
             dest_port = 5002
 
             try:
