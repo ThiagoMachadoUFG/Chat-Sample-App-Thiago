@@ -67,7 +67,7 @@ def handle_client(conn, addr):
                 if reply != "ACK":
                     print("Error: Destination client did not receive message properly")
 
-        client_sock.close()
+            client_sock.close()
 
 
 
