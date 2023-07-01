@@ -9,7 +9,7 @@ users = {}
 
 try:
     with open(file_path, 'r') as file:
-        data = json.load(file)
+        users = json.load(file)
 except FileNotFoundError:
     pass
 
@@ -22,7 +22,7 @@ def handle_client(conn, addr):
             conn.send(pickle.dumps("ACK"))  # send ACK to client
             conn.close()
             name=msg_pack[1]
-            data[name]=addr[0]
+            users[name]=addr[0]
         elif type=="msge":
             print("msge")
             
@@ -45,4 +45,4 @@ while True:
 
 server_sock.close()
 with open(file_path, 'w') as file:
-    json.dump(data, file)
+    json.dump(users, file)
