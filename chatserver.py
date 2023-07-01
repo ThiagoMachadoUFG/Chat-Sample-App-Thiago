@@ -9,8 +9,10 @@ users = {}
 
 try:
     with open(file_path, 'r') as file:
-        users = json.load(file)
-except FileNotFoundError:
+        contents = file.read()
+        if contents:
+            users = json.loads(contents)
+except (FileNotFoundError, json.JSONDecodeError):
     pass
 
 def handle_client(conn, addr):
