@@ -64,6 +64,7 @@ while True:
     server_sock = socket(AF_INET, SOCK_STREAM) # socket to connect to server
     dest = input("ENTER DESTINATION: ")
     msg = input("ENTER MESSAGE: ")
+    type="msge"
     #
     # Connect to server
     try:
@@ -73,7 +74,7 @@ while True:
         exit(1)
     #
     # Send message and wait for confirmation
-    msg_pack = (msg, dest, me)
+    msg_pack = (type,msg, dest, me)
     marshaled_msg_pack = pickle.dumps(msg_pack)
     server_sock.send(marshaled_msg_pack)
     marshaled_reply = server_sock.recv(1024)
