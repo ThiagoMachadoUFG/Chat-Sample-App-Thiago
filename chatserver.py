@@ -2,15 +2,30 @@ from socket import *
 import pickle
 import const
 import threading
+import json
+
+file_path = 'users.json'
+users = {}
+
+try:
+    with open(file_path, 'r') as file:
+        data = json.load(file)
+except FileNotFoundError:
+    pass
 
 def handle_client(conn, addr):
     try:
         marshaled_msg_pack = conn.recv(1024)  # receive data from client
         msg_pack = pickle.loads(marshaled_msg_pack)
         type = msg_pack[0]
-        print(type)
-        conn.send(pickle.dumps("ACK"))  # send ACK to client
-        conn.close()
+        if type=="auth":
+            conn.send(pickle.dumps("ACK"))  # send ACK to client
+            conn.close()
+            name=msg_pack[1]
+            data[name]=addr[0]
+        else if type=="msge":
+            print("msge")
+            
     except Exception as e:
         print("Error handling client:", e)
 
@@ -29,3 +44,5 @@ while True:
         break
 
 server_sock.close()
+with open(file_path, 'w') as file:
+    json.dump(data, file)
