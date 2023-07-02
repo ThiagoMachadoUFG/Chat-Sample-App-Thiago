@@ -1,5 +1,5 @@
 Alunos: THIAGO DOS SANTOS MACHADO
-        VINICIUS RIBEIRO PARREIRA
+        /VINICIUS RIBEIRO PARREIRA
 
 A Aplicação foi modificada para incluir multithreading para tratamento de mensagens e um sistema rudimentar de cadastro de usuários, na forma de um arquivo json que é editado pelo servervidor ao estabelecer contanto com um cliente para incluir seus dados, sem autenticação.
 
